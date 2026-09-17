@@ -2,6 +2,7 @@
 import numpy as np
 
 #1.1 The ID3 Algorithm 
+
 class DecisionTree:
     def __init__(self, criterion="entropy", maxDepth=None):
         self.criterion = criterion
@@ -16,15 +17,17 @@ class DecisionTree:
 
 
 def entropy(y):
-    # for each unique class c in y:
-    #     p = andel av y som er c
-    #     akkumuler -p * log2(p)   (hopp over p=0)
-    # return akkumulert sum
+    _, classCount = np.unique(y, return_counts = True) #returns the number of times each class occured as a array
+    accumulatedSum = 0
     
-    uniqueClasses, numberOfEach = 
+    for count in classCount: 
+        p = count /len(y)   #proportion of each class
+        entropyTerm = -p * np.log2(p)  #calculating entropy for each class
+        accumulatedSum += entropyTerm 
+        
+    return accumulatedSum
 
-
-def best_split(X, y, impurityFunction):
+def bestSplit(X, y, impurityFunction):
     ...
 
 
@@ -39,9 +42,14 @@ def predictOne(x, node):
 
 
 #1.2 The Gini Index
+
 def gini(y):
-    # sum = 1
-    # for each unique class c in y:
-    #     p = andel av y som er c
-    #     sum = sum - p^2
-    # return sum
+    _, classCount = np.unique(y, return_counts = True) #returns the number of times each class occured as a array
+    accumulatedSum = 1
+    
+    for count in classCount: 
+        p = count /len(y)   #proportion of each class
+        giniTerm = p ** 2   #calculating gini for each class
+        accumulatedSum -= giniTerm 
+        
+    return accumulatedSum
