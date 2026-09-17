@@ -3,6 +3,24 @@ import numpy as np
 
 #1.1 The ID3 Algorithm 
 
+class Node:
+    def __init__(
+            self,
+            featureIndex = None,
+            threshold = None,
+            left = None,
+            right = None,
+            value = None,
+    ):
+        self.fetureIndex = featureIndex,
+        self.threshold = threshold,
+        self.left = left,
+        self.right = right,
+        self.value = value
+
+    def isSelf(self):
+        return (if self is this.self)
+
 class DecisionTree:
     def __init__(self, criterion="entropy", maxDepth=None):
         self.criterion = criterion
