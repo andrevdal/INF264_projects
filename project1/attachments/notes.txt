@@ -14,9 +14,9 @@ Collaberation:
 how we divided our work ....
 
 
-Amy : impurity functions, best split function, the class DesitionTree 
+Amy : impurity functions, best split function, the class DesitionTree, hele section1 egt
 
-Andreas : build tree function
+Andreas : made class Node
 
 
 
@@ -52,3 +52,7 @@ koden ikke trenger en if p == 0-linje.
 vi valgte å bruke gjennomsnitt. Det er fordi median ikke vil gi meningsfulle data for binære data. 
 Gjennomsnittet vil gi anndelen av av 1 eller 0 som er langt mer informativt. Vi sjeket også med df.describe 
 at i ikke-binære data var det ikke stort avvik mellom median og gjennomsnitt, som gjorde valget veldig lett.
+
+**I buildTree**
+i tilfellet bestsplit ikke klarte å splitte noe, så må vi ha en sjekk om verdiene er None, 
+og stoppe den før det går for langt, heller ende det i en leaf-node
