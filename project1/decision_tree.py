@@ -31,10 +31,11 @@ class DecisionTree:
         self.root = None  # holds the tree structure once fit() executes
 
     def fit(self, X, y):
-        ...
+        self.root = buildTree(X, y, 0, self.maxDepth, impurityFunction = entropy if self.criterion == "entropy" else gini)
 
     def predict(self, X):
-        ...
+        #predicting one row at a time
+        return [predictOne(row, self.root) for row in X]
 
 
 def entropy(y):
@@ -80,7 +81,6 @@ def bestSplit(X, y, impurityFunction): #X = features, y = labels, impurityFuncti
     return best #return the gain, the index of the feature and the threshold
 
 
-
 def buildTree(X, y, depth, maxDepth, impurityFunction):
 
     #finds most common label
@@ -121,8 +121,14 @@ def buildTree(X, y, depth, maxDepth, impurityFunction):
     return innerNode
 
 
-def predictOne(x, node):
-    ...
+def predictOne(x, node): 
+    if node.isLeaf():
+        return node.value
+
+    elif x[node.featureIndex] <= node.threshold:
+        return predictOne(x, node.left)
+    else:
+        return predictOne(x, node.right)
 
 
 #1.2 The Gini Index
