@@ -1,0 +1,77 @@
+
+Project 1: Report
+"må flyttes ut før vi zipper, same with Instructoions.pdf-en og alle andre ikke-kode relaterte filer"
+
+What to do:
+A PDF report containing an explanation of your approach, design choices and results to help
+us understand how your particular implementation works. Describe your approach and design
+choices in detail. This include choice of model selection procedure, hyperparameters, scoring
+metric, etc. You can include figures and snippets of code in the PDF to elaborate any point you
+are trying to make.
+
+
+Collaberation:
+how we divided our work ....
+
+
+Amy : impurity functions, best split function, the class DesitionTree, hele section1 egt
+
+Andreas : made class Node
+
+
+
+Clarity:
+----
+**Diksusjon i section 1:**
+Tom gren-tilfellet dukker opp inni best_split, i loopen der du tester hver feature. 
+Etter at du har delt y i y_venstre og y_høyre basert på en gitt terskel, må du sjekke 
+om en av dem har lengde 0 (altså at alle datapunktene havnet på samme side). Hvis det skjer, 
+betyr det at denne featuren/terskelen ikke faktisk splitter noe som helst — du bør hoppe over 
+den kandidaten helt (ikke regne ut informasjonsgevinst for den, siden det ville gitt feil eller 
+meningsløse tall). Så: en if-sjekk rett etter du har delt opp y, før du går videre til å regne 
+ut gevinst for akkurat den featuren.
+
+Uavgjort-tilfellet dukker opp samme sted, i sammenligningen der du holder styr 
+på "beste gevinst så langt". Hvis du bruker streng "større enn" (>) når du
+sjekker om en ny kandidat slår den nåværende beste, blir uavgjort automatisk løst 
+på en fornuftig måte: den første featuren du møter med den høyeste gevinsten vinner, og senere 
+featurer med akkurat samme gevinst overskriver den ikke (siden de ikke er strengt bedre). 
+Dette er ikke noe du trenger ekstra kode for — det er en konsekvens av å bruke > i stedet for >=. 
+Men det er verdt å nevne eksplisitt i rapporten at du er klar over at dette er valget ditt 
+(førstemann-vinner ved uavgjort), siden det viser at du har tenkt gjennom det, selv om løsningen er enkel.
+
+----
+Vi visste om et problem i entropy og gini om p = 0, men det var ikke et problem siden vi bruke np.uniqe, 
+som bare henter ut eksisterende klasser, som eksplisitt ble nevnat at alltid hadde en count > 1. Men uten 
+dette kunne dette fortsatt lett fikses med en if setsning som sjekket etter disse tilfellene.
+Det er likevel verdt en kort setning i rapporten om nettopp dette — at du har vurdert kanttilfellet, 
+men at implementasjonen din (bruk av np.unique på faktisk forekommende klasser) gjør det unødvendig 
+med en eksplisitt sjekk. Det er akkurat den typen refleksjon som teller under "clarity", selv om selve 
+koden ikke trenger en if p == 0-linje.
+
+----
+**Valg av hvordan vi finner terskel** 
+vi valgte å bruke gjennomsnitt. Det er fordi median ikke vil gi meningsfulle data for binære data. 
+Gjennomsnittet vil gi anndelen av av 1 eller 0 som er langt mer informativt. Vi sjeket også med df.describe 
+at i ikke-binære data var det ikke stort avvik mellom median og gjennomsnitt, som gjorde valget veldig lett.
+
+----
+**I buildTree**
+i tilfellet bestsplit ikke klarte å splitte noe, så må vi ha en sjekk om verdiene er None, 
+og stoppe den før det går for langt, heller ende det i en leaf-node
+
+----
+Hvorfor den er nyttig likevel: predict(X) skal gi deg en gjetning for hver rad i X — kanskje hundrevis 
+eller tusenvis av kunder på én gang. Men selve algoritmen for å gjette på ett enkelt datapunkt 
+(start ved roten, sammenlign mot terskel, gå til venstre eller høyre gren, gjenta til du treffer et løvnode) 
+er noe som naturlig beskrives for én rad om gangen. Hvis du prøvde å skrive all denne traverserings-logikken direkte inni predict(X) 
+sammen med løkken som går gjennom alle radene, ville funksjonen blitt rotete og vanskelig å lese (og debugge).
+
+Ved å dele det opp — predictOne(x, node) gjør selve traverseringen for én rad, predict(X) bare looper og kaller 
+predictOne for hver rad — blir begge funksjonene enkle å forstå hver for seg. Det gjør det også lettere å 
+teste: du kan sjekke at predictOne gir riktig svar på én håndlaget rad, før du stoler på at predict 
+fungerer for hele datasettet.
+
+Så kort sagt: predictOne er ikke et eksplisitt krav, men et design-valg for å holde koden ryddig — 
+akkurat den typen valg som er verdt å nevne kort i rapporten under "clarity of code", siden det 
+viser at du har tenkt gjennom strukturen.
