@@ -98,7 +98,7 @@ def buildTree(X, y, depth, maxDepth, impurityFunction):
         return Node(value = mostCommon) #leaf node
 
     #split the data
-    gain, featureIndex, threshold  = bestSplit(X, y, impurityFunction)
+    _, featureIndex, threshold  = bestSplit(X, y, impurityFunction)
 
     if featureIndex is None: #if no split worked, we wont have any values
         return Node(value = mostCommon) #leaf node

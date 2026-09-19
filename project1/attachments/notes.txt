@@ -75,3 +75,19 @@ fungerer for hele datasettet.
 Så kort sagt: predictOne er ikke et eksplisitt krav, men et design-valg for å holde koden ryddig — 
 akkurat den typen valg som er verdt å nevne kort i rapporten under "clarity of code", siden det 
 viser at du har tenkt gjennom strukturen.
+
+Yes—your approach addresses all four points.
+Question	What your code does
+Which hyperparameters?	Tunes the splitting criterion and maximum tree depth.
+Which values?	Tests entropy and gini, each with depths 1, 2, 3, 5, 10, None: 12 combinations.
+Which selection method?	Uses hold-out validation: 60% training, 20% validation, 20% testing, with stratification and seed 67.
+Which performance measure?	Selects the combination with the highest validation F1 for churn (1). Accuracy is also displayed but does not determine the winner.
+
+
+Your saved result selects Gini with depth 5, with validation F1 approximately 0.602.
+You should also explain these choices in the report:
+- Both criteria are implemented, so you compare them.
+- The depths cover small, medium, and unrestricted trees.
+- Hold-out validation provides a straightforward, reproducible comparison using the same data for every candidate.
+- F1 considers how many churners you find and how accurate your churn predictions are. Your depth-1 results demonstrate why accuracy alone can mislead.
+One code issue remains: your saved notebook mixes X_val_test/y_val_test with the old names X_remaining/y_remaining, including in the final training cell. Use consistent names for that combined training-and-validation data, then restart the kernel and run all cells.
