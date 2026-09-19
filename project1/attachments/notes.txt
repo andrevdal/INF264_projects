@@ -90,4 +90,50 @@ You should also explain these choices in the report:
 - The depths cover small, medium, and unrestricted trees.
 - Hold-out validation provides a straightforward, reproducible comparison using the same data for every candidate.
 - F1 considers how many churners you find and how accurate your churn predictions are. Your depth-1 results demonstrate why accuracy alone can mislead.
-One code issue remains: your saved notebook mixes X_val_test/y_val_test with the old names X_remaining/y_remaining, including in the final training cell. Use consistent names for that combined training-and-validation data, then restart the kernel and run all cells.
+One code issue remains: your saved notebook mixes 
+X_val_test/y_val_test with the old names X_remaining/y_remaining, 
+including in the final training cell. Use consistent names for that 
+combined training-and-validation data, then restart the kernel and run all cells.
+
+
+
+SEKSJON 2:
+Rapporten må forklare valgene. Hvorfor hold-out, hvorfor F1 og 
+ikke accuracy (dybde 1 viser hvorfor), og hvorfor de valgte dybdene. 
+Skriv også at sklearn bruker andre terskelkandidater enn deres gjennomsnitt, 
+så resultatene er ikke direkte sammenlignbare. Nevn dessuten at testresultatet 
+kommer fra én enkelt splitt, så forskjellen mellom modellene er usikker.
+
+Deres tre har høyere accuracy (0,798 mot 0,737) men omtrent lik F1. 
+Det er verdt en setning om at de veier recall og precision ulikt.
+
+
+
+SEKSJON 3:
+Ideer til diskusjonen, som du bør skrive med dine egne ord:
+
+Korrelerte features: hvis to features sier det samme, kan modellen kompensere når én blandes, så begge virker mindre viktige enn de er.
+Blanding kan lage urealistiske kombinasjoner, som «tenure» og «TotalCharges» som ikke passer sammen.
+Resultatet gjelder bare denne modellen og dette datasettet, og sier ikke noe om kausalitet.
+Deres tre er grunt (dybde 5), så mange features brukes aldri og får nøyaktig 0.
+Tilfeldigheten i blandingen gir varians, og accuracy kan skjule at churn-klassen er skjev.
+
+Vi vil vite hvor viktig hver feature er for modellen. Vi gjør det ved å ødelegge én feature
+ om gangen og se hvor mye modellen blir dårligere:
+
+Hvis modellen blir mye dårligere, brukte den featuren mye, altså er den viktig.
+Hvis modellen knapt endrer seg, trengte den ikke featuren.
+
+
+plottingen og tabellen:-----------
+
+Alle disse verdiene er like i første, andre og tredje kjøring, og resten er 0 hver gang. Det betyr at funksjonen er reproduserbar med samme seed.
+
+Merk at MonthlyCharges og TotalCharges har 0. Det er verdt å kommentere i rapporten. De henger sammen med tenure (TotalCharges er omtrent tenure × MonthlyCharges), så treet valgte tenure fremfor dem. Det er også et eksempel på svakheten med korrelerte features.
+Importance 0 betyr ikke at featuren ikke har noe å si for churn, bare at akkurat denne modellen ikke bruker den.
+
+
+kilder:
+https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.barh.html
+
+https://scikit-learn.org/stable/modules/permutation_importance.html#outline-of-the-permutation-importance-algorithm
