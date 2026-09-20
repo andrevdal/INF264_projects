@@ -13,10 +13,13 @@ are trying to make.
 Collaberation:
 how we divided our work ....
 
+Section 1, rapport sammen
+alle diskuasjoner sammen
+grafer sammen
 
-Amy : impurity functions, best split function, the class DesitionTree, hele section1 egt
+Amy : section 3, 
 
-Andreas : made class Node
+Andreas : section 2
 
 
 

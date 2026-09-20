@@ -36,8 +36,7 @@ class DecisionTree:
         self.root = buildTree(X, y, 0, self.max_depth, impurityFunction = entropy if self.criterion == "entropy" else gini)
 
     def predict(self, X):
-        #predicting one row at a time
-        return [predictOne(row, self.root) for row in X]
+        return [predictOne(row, self.root) for row in X] #predicting one row at a time
 
 
 def entropy(y):
