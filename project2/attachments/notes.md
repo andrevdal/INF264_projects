@@ -9,6 +9,7 @@ Amy:
 - Random forest
 - kNN
 - SVM
+- fiks at det ikke er like store mellomrom i knn
 
 
 - skrive om kommentarene i md-seksjonene (de som har sånn grå bakgrunn er ikke ferdige kommenttarer)
@@ -96,7 +97,6 @@ Vi velger disse:
 
 KILDER:
 valg av SVM vs MLP -> https://www.geeksforgeeks.org/machine-learning/support-vector-machines-vs-neural-networks/ 
- 
 
 plt.legend -> https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.legend.html
 
@@ -105,3 +105,10 @@ math plot patch -> https://matplotlib.org/stable/api/_as_gen/matplotlib.patches.
 grid cross val score -> https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html
 
 cv -> https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.StratifiedKFold.html 
+
+modelene
+knn -> https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html 
+
+random forest -> https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html
+
+svc -> https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html
