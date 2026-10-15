@@ -1,35 +1,20 @@
 # To do:
-- se gjennom alle forelesningene og se hvilke modeller vi har lært
-- velge modellene vi skal bruke videre
-- 
+Andreas:
+- Model Comparison med metric(macro-F1)
+- Hele seksjon 4
+- Legg til notater i notatet under seksjon 4 om alt som gjøres!!!!!! VELDIG VIKTIG!!!!
+
+
+Amy:
+- Random forest
+- kNN
+- SVM
+
 
 - skrive om kommentarene i md-seksjonene (de som har sånn grå bakgrunn er ikke ferdige kommenttarer)
 
 
 ## Notater til rapport -----------------
-# Modell valg:
-
-- desision trees: Dere kjenner det fra prosjekt 1. Alene er det ofte svakt på bilder.
-
-- CNN var et valg om vi ville gjøre det mer komplisert (If you are ambitious about deep learning, you can consider to use libraries such as, for example, PyTorch)
-men siden vi har en max kjøretid på 30 min på CPU-en, blir denne fort urealistisk
-
-- SVM og MLP kan også fort bli treige ved store hyperparamerergrider. 
-SVM har en grense i motsatt retning: Den blir treg på veldig store datasett. Derfor passer den godt til størrelsen vår, som er stor nok til å lære mye og liten nok til at SVM er gjennomførbar.
----
-"We chose SVM over an MLP because SVMs tend to perform well on small to medium-sized datasets such as ours (about 15,000 images), while neural networks usually need larger amounts of data to outperform simpler models. SVM also has fewer hyperparameters to tune and gives deterministic results. At the same time, our dataset is small enough that training an SVM remains feasible on a CPU within the time limit."
----
-
-Vi velger disse:
-*k-NN*	Ser på de mest like treningsbildene (avstand piksel for piksel)	
-        Følsom for støy og forskyvninger i bildet. Alle piksler teller like mye.
-
-*Random* Mange trær stiller ja/nei-spørsmål om enkeltpiksler	
-*Forest* Ser på enkeltpiksler, ikke helheten
-
-*SVM*	Lager glatte skillegrenser mellom klassene i et høydimensjonalt rom	
-        Kan slite når klassene overlapper mye
-
 
 # Seksjon 1:
 pixel verdiene -> Det gir et hint om hvilke klasser som blir 
@@ -79,6 +64,30 @@ Både falske positive og falske negative er kostbare. Hvis malware ikke blir opp
 Til sammen gjør dette macro-F1 til den mest passende hovedmetrikken. Vi rapporterer i tillegg accuracy fordi den er intuitiv og lett å kommunisere. Forskjellen mellom de to tallene sier også noe om hvor jevnt modellen presterer på tvers av klassene.
 
 # Seksjon 3:
+# Modell valg --------
+
+- desision trees: Dere kjenner det fra prosjekt 1. Alene er det ofte svakt på bilder.
+
+- CNN var et valg om vi ville gjøre det mer komplisert (If you are ambitious about deep learning, you can consider to use libraries such as, for example, PyTorch)
+men siden vi har en max kjøretid på 30 min på CPU-en, blir denne fort urealistisk
+
+- SVM og MLP kan også fort bli treige ved store hyperparamerergrider. 
+SVM har en grense i motsatt retning: Den blir treg på veldig store datasett. Derfor passer den godt til størrelsen vår, som er stor nok til å lære mye og liten nok til at SVM er gjennomførbar.
+---
+"We chose SVM over an MLP because SVMs tend to perform well on small to medium-sized datasets such as ours (about 15,000 images), while neural networks usually need larger amounts of data to outperform simpler models. SVM also has fewer hyperparameters to tune and gives deterministic results. At the same time, our dataset is small enough that training an SVM remains feasible on a CPU within the time limit."
+---
+
+Vi velger disse:
+*k-NN*	Ser på de mest like treningsbildene (avstand piksel for piksel)	
+        Følsom for støy og forskyvninger i bildet. Alle piksler teller like mye.
+
+*Random* Mange trær stiller ja/nei-spørsmål om enkeltpiksler	
+*Forest* Ser på enkeltpiksler, ikke helheten
+
+*SVM*	Lager glatte skillegrenser mellom klassene i et høydimensjonalt rom	
+        Kan slite når klassene overlapper mye
+-------------------------------------------------
+
 
 # Seksjon 4:
 
@@ -92,3 +101,7 @@ valg av SVM vs MLP -> https://www.geeksforgeeks.org/machine-learning/support-vec
 plt.legend -> https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.legend.html
 
 math plot patch -> https://matplotlib.org/stable/api/_as_gen/matplotlib.patches.Patch.html
+
+grid cross val score -> https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html
+
+cv -> https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.StratifiedKFold.html 
