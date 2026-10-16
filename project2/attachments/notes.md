@@ -6,6 +6,7 @@ Andreas:
 - Hele seksjon 4
 - Legg til notater i notatet under seksjon 4 om alt som gjøres!!!!!! VELDIG VIKTIG!!!!
 - Legge til accuracy I 3.5
+- Intro til prosjekt
 
 Amy:
 
@@ -13,6 +14,7 @@ Amy:
 - Finere prints og tabellers
 - forklar hva gridsearch er (kansje)
 - legg linker til i modellene (sånn som andreas)
+- gjøre plot i 4.3 fra 0.5 - 1 y-aksen
 
 - skrive om kommentarene i md-seksjonene (de som har sånn grå bakgrunn er ikke ferdige kommenttarer)
 
