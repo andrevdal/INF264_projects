@@ -9,8 +9,10 @@ Andreas:
 
 Amy:
 
-- fiks at det ikke er like store mellomrom i knn
+- Skriv om: Installer 3 bilder, funker ikke med foldsa
+- Finere prints og tabellers
 - forklar hva gridsearch er (kansje)
+- legg linker til i modellene (sånn som andreas)
 
 - skrive om kommentarene i md-seksjonene (de som har sånn grå bakgrunn er ikke ferdige kommenttarer)
 
@@ -105,6 +107,8 @@ Kan slite når klassene overlapper mye
 ---
 
 # Seksjon 4:
+
+We select the highest mean macro-F1 before rounding. If scores are exactly equal, we prefer the single model, then standard voting, following the table order. The winner is stored as `final_model` and `final_model_name`. In Section 5, we will fit it on all training data with `final_model.fit(X_train_scaled, y_train)` before evaluating it on the test set. Cross-validation fits copies and does not leave the ensembles fitted.
 
 # Seksjon 5:
 
