@@ -5,6 +5,7 @@ Andreas:
 - Model Comparison med metric(macro-F1)
 - Hele seksjon 4
 - Legg til notater i notatet under seksjon 4 om alt som gjøres!!!!!! VELDIG VIKTIG!!!!
+- Legge til accuracy I 3.5
 
 Amy:
 
@@ -27,7 +28,7 @@ matrix i seksjon 5, og hvis det stemmer, er det en fin
 kobling å trekke i rapporten.
 
 CV fold på installer ->
-        Installer i CV: behold klassen
+Installer i CV: behold klassen
 
         Ikke fjern Installer. Oppgaven er å skille mellom alle 10 klassene, så en modell uten Installer løser ikke oppgaven. Men vær ærlig om hva som skjer:
 
