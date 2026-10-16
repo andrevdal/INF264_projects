@@ -27,6 +27,17 @@ pixel verdiene -> Det gir et hint om hvilke klasser som blir
                 matrix i seksjon 5, og hvis det stemmer, er det en fin 
                 kobling å trekke i rapporten.
 
+CV fold på installer ->
+        Installer i CV: behold klassen
+
+        Ikke fjern Installer. Oppgaven er å skille mellom alle 10 klassene, så en modell uten Installer løser ikke oppgaven. Men vær ærlig om hva som skjer:
+
+        Med 3 unike bilder får testsettet 1 og treningssettet 2 (stratifiseringen sørger for det).
+        Når 2 bilder fordeles på 5 folds, får 3 av foldene ingen Installer-bilder til validering. Du får en advarsel som "The least populated class in y has only 2 members, which is less than n_splits=5". Det er forventet og ikke en feil, så la den stå.
+        I folds uten Installer teller ikke klassen med i macro-F1, med mindre modellen feilaktig gjetter Installer på et annet bilde.
+
+        Konsekvensen er at dere har nesten ingen informasjon om hvor godt modellen kjenner igjen Installer. Det skal stå tydelig i rapporten, for eksempel: "After removing duplicates, Installer has only 3 unique images (2 in training, 1 in test). The model's ability to recognise this class can therefore not be reliably estimated, and any score for Installer should be interpreted with great caution."
+
 # Seksjon 2:
 splitting av data -> I prosjekt 1 valgte vi en 60/20/20 split, siden da besluttet vi at den passet best. 
                 I dette prosjektet velger vi en 80/20 split med cv fold på testdataen. Mange klasser og 
