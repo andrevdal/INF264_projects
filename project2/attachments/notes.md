@@ -3,7 +3,6 @@
 Andreas:
 
 - Legg til notater i notatet under seksjon 4 og 5.1 - 5.3 om alt som gjøres!!!!!! VELDIG VIKTIG!!!! (hvorfor noe gjøres liksm)
-- gå gjennom teksten med chat og finn steder hvor vi sier det samme for mange ganger og fjern det
 - Methods i raporten
 - Results i raporten
 
