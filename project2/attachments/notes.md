@@ -2,18 +2,20 @@
 
 Andreas:
 
-- Model Comparison med metric(macro-F1)
-- Hele seksjon 4
-- Legg til notater i notatet under seksjon 4 om alt som gjøres!!!!!! VELDIG VIKTIG!!!!
+- Legg til notater i notatet under seksjon 4 om alt som gjøres!!!!!! VELDIG VIKTIG!!!! (hvorfor noe gjøres liksm)
 - Legge til accuracy I 3.5
 - Intro til prosjekt
+- gå gjennom teksten med chat og finn steder hvor vi sier det samme for mange ganger og fjern det
+- Methods i raporten 
+- Results i raporten
+
 
 Amy:
 
-- Skriv om: Installer 3 bilder, funker ikke med foldsa
 - Finere prints og tabellers
 - forklar hva gridsearch er (kansje)
-- legg linker til i modellene (sånn som andreas)
+- forklare 5.5
+- legg linker til i modellene (i 3.2, 3.3, 3.4)
 - gjøre plot i 4.3 fra 0.5 - 1 y-aksen
 
 - skrive om kommentarene i md-seksjonene (de som har sånn grå bakgrunn er ikke ferdige kommenttarer)
@@ -113,6 +115,17 @@ Kan slite når klassene overlapper mye
 We select the highest mean macro-F1 before rounding. If scores are exactly equal, we prefer the single model, then standard voting, following the table order. The winner is stored as `final_model` and `final_model_name`. In Section 5, we will fit it on all training data with `final_model.fit(X_train_scaled, y_train)` before evaluating it on the test set. Cross-validation fits copies and does not leave the ensembles fitted.
 
 # Seksjon 5:
+Hypotesen holder delvis:
+
+Den støttes: De to likeste parene er også blant de som blir forvekslet mest. Good–Backdoor 2 er det paret med flest feil av alle.
+Unntak: Backdoor 1 og Downloader er det tredje likeste paret, men blir nesten aldri forvekslet.
+Overraskelse: Good–Crypto har 40 feil, men var ikke blant de fem likeste parene.
+Det største mønsteret: Good er med i nesten alle de store feilene og har en recall på bare 19 %. Trygge filer ligner tydeligvis på mange ulike typer malware. Det er et viktig funn, fordi det betyr mange falske alarmer for alvene.
+
+Store klasser får flere feil bare fordi de har flere bilder. Crypto har 734 testbilder og Downloader 118.
+
+The Good class is part of 4 of the 5 most confused pairs. This suggests that Good is hard to classify in general, not only because it looks like one spesific class. 
+
 
 KILDER:
 valg av SVM vs MLP -> https://www.geeksforgeeks.org/machine-learning/support-vector-machines-vs-neural-networks/
