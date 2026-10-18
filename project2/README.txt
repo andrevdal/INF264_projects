@@ -1,4 +1,4 @@
-INF264 Project 2: Implementing Decision Trees
+INF264 Project 2: Malware classification for Santa
 
 MAIN FILE
 
