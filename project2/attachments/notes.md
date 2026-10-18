@@ -1,18 +1,13 @@
 # To do:
 
 Andreas:
-
-- Legg til notater i notatet under seksjon 4 og 5.1 - 5.3 om alt som gjøres!!!!!! VELDIG VIKTIG!!!! (hvorfor noe gjøres liksm)
-- Methods i raporten
-- Results i raporten
+- zipe 
+- skrive kildene
 
 Amy:
 
-- Finere prints og tabellers
-- forklar hva gridsearch er (kansje)
 - forklare 5.5
-- legg linker til i modellene (i 3.2, 3.3, 3.4)
-- gjøre plot i 4.3 fra 0.5 - 1 y-aksen
+-
 
 - skrive om kommentarene i md-seksjonene (de som har sånn grå bakgrunn er ikke ferdige kommenttarer)
 
